@@ -1,0 +1,40 @@
+package alice;
+
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
+
+public class Alice {
+    LinkedList<String> alunos = new LinkedList<String>();
+
+    public static void main(String[] args) {
+        Alice a = new Alice();
+        a.addAlunos();
+        a.procura(JOptionPane.showInputDialog("Nome do aluno que deseja encontrar:"), a.alunos);
+        
+    } 
+    public void addAlunos(){
+        int qtd = Integer.parseInt(JOptionPane.showInputDialog("Quantos alunos deseja cadastrar?"));
+        for(int i = 1; i <= qtd; i++){
+            alunos.add(JOptionPane.showInputDialog("Nome do " + i + "º aluno"));
+        }
+    }
+    
+    public void listar(){
+        String msg = "Alunos: \n";
+        for(String s: alunos){
+            msg  += s + "\n";
+        }
+        JOptionPane.showMessageDialog(null, msg);
+    }
+     public void procura(String aluno, LinkedList<String> alunos){
+         String msg = "Aluno(a) " + aluno + " NÃO ENCONTRADO!";
+         for(String s:alunos){
+             if(s.equals(aluno)){
+                 msg = "Aluno(a) " + aluno + " ENCONTRADO!";
+             }
+         }
+         JOptionPane.showMessageDialog(null, msg);
+     }
+}
+
+
